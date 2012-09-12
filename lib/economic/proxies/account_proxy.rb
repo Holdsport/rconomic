@@ -18,5 +18,33 @@ module Economic
       entity
       
     end
+
+    def all
+      response = session.request entity_class.soap_action('GetAll')
+
+      handles = [response[:account_handle]].flatten.reject(&:blank?)
+      accounts = []
+      handles.each do |handle|
+        accounts << get_name(handle[:number])
+      end
+      
+      accounts
+    end
+
+    def get_name(id)
+      response = session.request entity_class.soap_action("GetName") do
+        soap.body = {
+          'accountHandle' => {
+            'Number' => id
+          }
+        }
+      end
+
+      account = build
+      account.number = id
+      account.name = response
+      account
+    end
+
   end
 end

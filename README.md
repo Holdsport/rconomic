@@ -85,6 +85,7 @@ Not even remotely... For now, limited to a small subset of all the [available op
 
                        | Create | Read | Update | Delete
     -------------------+--------+------+--------+-------
+    Account            |        | X    |        |
     CashBook           | X      | X    | X      | X
     CashBookEntry      | X      | X    | X      | X
     CurrentInvoice     | X      | X    | X      | X
