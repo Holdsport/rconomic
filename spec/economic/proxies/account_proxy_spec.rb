@@ -14,12 +14,10 @@ describe Economic::AccountProxy do
 
     it "returns multiple accounts" do
       savon.expects('Account_GetAll').returns(:multiple)
-      savon.expects('Account_GetName').returns(:success)
-      savon.expects('Account_GetName').returns(:success)
+      savon.expects('Account_GetDataArray').returns(:multiple)
       all = subject.all
       all.size.should == 2
-      all[0].should be_instance_of(Economic::Account)
-      all[1].should be_instance_of(Economic::Account)
+      all.first.should be_instance_of(Economic::Account)
     end
 
   end
