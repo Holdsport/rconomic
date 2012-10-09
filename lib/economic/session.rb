@@ -48,6 +48,11 @@ module Economic
       @debtors ||= DebtorProxy.new(self)
     end
 
+    # Provides access to the debtor groups
+    def debtors
+      @debtor_groups ||= DebtorGroupProxy.new(self)
+    end
+
     # Provides access to creditors
     def creditors
       @creditors ||= CreditorProxy.new(self)
