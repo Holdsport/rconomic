@@ -53,6 +53,11 @@ module Economic
       @debtor_groups ||= DebtorGroupProxy.new(self)
     end
 
+    # Provides access to the debtor groups
+    def template_collection
+      @template_collection ||= TemplateCollectionProxy.new(self)
+    end
+
     # Provides access to creditors
     def creditors
       @creditors ||= CreditorProxy.new(self)
