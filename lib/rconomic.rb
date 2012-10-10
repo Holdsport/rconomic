@@ -35,7 +35,7 @@ require 'economic/proxies/cash_book_entry_proxy'
 require 'economic/proxies/account_proxy'
 require 'economic/proxies/debtor_entry_proxy'
 require 'economic/proxies/creditor_entry_proxy'
-require 'economic/template_collection_proxy'
+require 'economic/proxies/template_collection_proxy'
 require 'economic/proxies/entry_proxy'
 
 # http://www.e-conomic.com/apidocs/Documentation/index.html
