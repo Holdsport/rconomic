@@ -15,7 +15,7 @@ module Economic
     has_properties :name
 
     def handle
-      Handle.new({:name => @name})
+      Handle.new({:id => @name})
     end
 
   end
