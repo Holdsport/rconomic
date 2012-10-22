@@ -8,18 +8,18 @@ module Economic
   #
   # Examples
   #
-  #   # Find debtor_groups
+  #   # Find a debtor_group
   #   debtor_groups = economic.debtor_groups.find(5)
   #
-  #   # Creating a debtor_groups
+  #   # Creating a debtor_group
   #   debtor_groups = economic.debtor_groups.build
-  #   debtor_groups.account = ???
-  #   debtor_groups.number = 0
+  #   debtor_groups.account_handle = { :number => 5800}
+  #   debtor_groups.number = 4
   #   debtor_groups.name = 'Domestic'
   #   debtor_groups.save
 
   class DebtorGroup < Entity
-    has_properties :account, :number, :name
+    has_properties :number, :name, :account_handle
 
     def handle
       Handle.new({:number => @number})
@@ -31,9 +31,9 @@ module Economic
       data = ActiveSupport::OrderedHash.new
 
       data['Handle'] = handle.to_hash
-      data['Account'] = account
       data['Name'] = name
       data['Number'] = number
+      data['AccountHandle'] = { 'Number' => account_handle[:number] } unless account_handle.blank?
       
       return data
     end

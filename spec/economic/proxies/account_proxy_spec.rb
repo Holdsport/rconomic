@@ -17,7 +17,8 @@ describe Economic::AccountProxy do
       savon.expects('Account_GetDataArray').returns(:multiple)
       all = subject.all
       all.size.should == 2
-      all.first.should be_instance_of(Economic::Account)
+      all.should be_instance_of(Array)
+      all.first.should be_instance_of(Hash)
     end
 
   end

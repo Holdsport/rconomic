@@ -20,6 +20,8 @@ require 'economic/account'
 require 'economic/debtor_entry'
 require 'economic/creditor_entry'
 require 'economic/template_collection'
+require 'economic/product_group'
+require 'economic/product'
 require 'economic/entry'
 
 require 'economic/proxies/current_invoice_proxy'
@@ -36,6 +38,8 @@ require 'economic/proxies/account_proxy'
 require 'economic/proxies/debtor_entry_proxy'
 require 'economic/proxies/creditor_entry_proxy'
 require 'economic/proxies/template_collection_proxy'
+require 'economic/proxies/product_group_proxy'
+require 'economic/proxies/product_proxy'
 require 'economic/proxies/entry_proxy'
 
 # http://www.e-conomic.com/apidocs/Documentation/index.html
