@@ -16,6 +16,15 @@ module Economic
       cash_book
 
     end
+
+    def find(handle)
+      handle = if handle.respond_to?(:to_i)
+        Entity::Handle.new(:number => handle.to_i)
+      else
+        Entity::Handle.new(handle)
+      end
+      super(handle)
+    end
     
     def all
       response = session.request entity_class.soap_action('GetAll')
