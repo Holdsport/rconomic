@@ -58,6 +58,11 @@ module Economic
       @template_collections ||= TemplateCollectionProxy.new(self)
     end
 
+    # Provides access to the term of payments
+    def term_of_payments
+      @term_of_payments ||= TermOfPaymentProxy.new(self)
+    end
+
     # Provides access to the product groups
     def product_groups
       @product_groups ||= ProductGroupProxy.new(self)
