@@ -12,10 +12,10 @@ module Economic
   #   template_collection = economic.template_collection.find(5)
 
   class TemplateCollection < Entity
-    has_properties :name
+    has_properties :name, :id
 
     def handle
-      Handle.new({:id => @name})
+      Handle.new({:id => @id})
     end
 
   end
