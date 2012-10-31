@@ -1,11 +1,9 @@
 module Economic
   class Session
-    attr_accessor :agreement_number, :user_name, :password
+    attr_accessor :token
 
-    def initialize(agreement_number, user_name, password)
-      self.agreement_number = agreement_number
-      self.user_name = user_name
-      self.password = password
+    def initialize(token)
+      self.token = token
     end
 
     # Returns the Savon::Client used to connect to e-conomic
@@ -16,13 +14,11 @@ module Economic
     end
 
     # Authenticates with e-conomic
-    def connect
-      response = client.request :economic, :connect do
+    def connect_with_token
+      response = client.request :economic, :connect_with_token do
         soap.body = {
-          :agreementNumber => self.agreement_number,
-          :userName => self.user_name,
-          :password => self.password,
-          :order! => [:agreementNumber, :userName, :password]
+          :token => self.token,
+          :order! => [:token]
         }
       end
       client.http.headers["Cookie"] = response.http.headers["Set-Cookie"]
