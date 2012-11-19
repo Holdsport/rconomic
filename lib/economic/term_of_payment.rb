@@ -27,5 +27,35 @@ module Economic
       Handle.new({:id => @id})
     end
 
+    protected
+
+    def initialize_defaults
+      self.type = 'PaidInCash'
+      self.days = 0
+      self.contra_account2_handle = nil
+      self.debtor_handle = nil
+      self.distribution_in_percent = nil
+      self.distribution_in_percent2 = nil
+    end
+
+    def build_soap_data
+      data = ActiveSupport::OrderedHash.new
+
+      data['Handle'] = handle.to_hash
+      data['Id'] = id
+      data['Name'] = name
+      data['Type'] = type
+      data['Days'] = days
+      data['Description'] = description unless description.blank?
+      data['ContraAccountHandle'] = { 'Number' => contra_account_handle[:number] } unless contra_account_handle.blank?
+      data['ContraAccount2Handle'] = { 'Number' => contra_account2_handle[:number] } unless contra_account2_handle.blank?
+      data['DebtorHandle'] = { 'Number' => debtor_handle[:number] } unless debtor_handle.blank?
+      data['DistributionInPercent'] = distribution_in_percent
+      data['DistributionInPercent2'] = distribution_in_percent2
+
+      return data
+
+    end
+
   end
 end
