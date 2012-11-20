@@ -22,7 +22,13 @@ module Economic
 
       handles = response.values.flatten.collect { |handle| Entity::Handle.new(handle) }
       if handles.size == 1
-        find(handles.first)
+        Array( find(handles.first) )
+      elsif handles.size > 1
+        @array = []
+        for handle in handles
+          @array << find(handle)
+        end
+        @array
       end
       
     end

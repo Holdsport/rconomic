@@ -31,7 +31,7 @@ module Economic
 
     def initialize_defaults
       self.type = 'PaidInCash'
-      self.days = 0
+      self.days = nil
       self.contra_account2_handle = nil
       self.debtor_handle = nil
       self.distribution_in_percent = nil

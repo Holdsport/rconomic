@@ -21,7 +21,7 @@ module Economic
       handles = response.values.flatten.collect { |handle| Entity::Handle.new(handle) }
       if handles.size == 1
         find(handles.first)
-      else handles.size > 1
+      elsif handles.size > 1
 
         entity_data = session.request(entity_class.soap_action(:get_data_array)) do
           soap.body = {'entityHandles' => {"AccountHandle" => handles.collect(&:to_hash)}}
