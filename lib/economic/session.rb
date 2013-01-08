@@ -1,9 +1,10 @@
 module Economic
   class Session
-    attr_accessor :token
+    attr_accessor :token, :app_id
 
-    def initialize(token)
+    def initialize(token, app_id)
       self.token = token
+      self.app_id = app_id
     end
 
     # Returns the Savon::Client used to connect to e-conomic
@@ -18,7 +19,8 @@ module Economic
       response = client.request :economic, :connect_with_token do
         soap.body = {
           :token => self.token,
-          :order! => [:token]
+          :appToken => self.app_id,
+          :order! => [:token, :appToken]
         }
       end
       client.http.headers["Cookie"] = response.http.headers["Set-Cookie"]
