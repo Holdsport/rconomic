@@ -8,6 +8,11 @@ module Economic
 
   class Department < Entity
     has_properties :name, :number
+
+    def handle
+      Handle.new({:number => @number})
+    end
+    
   end
 
 end

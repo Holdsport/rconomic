@@ -67,8 +67,8 @@ module Economic
       data['TotalNetAmount'] = total_net_amount
       data['TotalMargin'] = total_margin unless total_margin.blank?
       data['MarginAsPercent'] = margin_as_percent unless margin_as_percent.blank?
-      data['DepartmentHandle'] = department_handle unless department_handle.blank?
-      data['DistributionKeyHandle'] = distribution_key_handle unless distribution_key_handle.blank?
+      data['DepartmentHandle'] = { 'Number' => department_handle[:number] } unless department_handle.blank?
+      data['DistributionKeyHandle'] = { 'Number' => distribution_key_handle[:number] } unless distribution_key_handle.blank?
 
       return data
     end
