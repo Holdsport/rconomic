@@ -51,6 +51,11 @@ module Economic
       @debtor_groups ||= DebtorGroupProxy.new(self)
     end
 
+    # Provides access to the departments
+    def departments
+      @departments ||= DepartmentProxy.new(self)
+    end
+
     # Provides access to the template collections
     def template_collections
       @template_collections ||= TemplateCollectionProxy.new(self)
