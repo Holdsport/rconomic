@@ -9,7 +9,7 @@ module Economic
   #
   # See Economic::CurrentInvoice for usage example
   class CurrentInvoiceLine < Entity
-    has_properties :invoice_handle, :description, :delivery_date, :unit_handle, :product_handle, :quantity, :unit_net_price, :discount_as_percent, :unit_cost_price, :total_net_amount, :total_margin, :margin_as_percent
+    has_properties :invoice_handle, :description, :delivery_date, :unit_handle, :product_handle, :quantity, :unit_net_price, :discount_as_percent, :unit_cost_price, :total_net_amount, :total_margin, :margin_as_percent, :department_handle, :distribution_key_handle
 
     def handle
       Handle.new(:number => number)
@@ -45,6 +45,8 @@ module Economic
       self.total_net_amount = nil
       self.total_margin = 0
       self.margin_as_percent = 0
+      self.department_handle = nil
+      self.distribution_key_handle = nil
     end
 
     # Returns OrderedHash with the properties of CurrentInvoice in the correct order, camelcased and ready
@@ -65,6 +67,8 @@ module Economic
       data['TotalNetAmount'] = total_net_amount
       data['TotalMargin'] = total_margin unless total_margin.blank?
       data['MarginAsPercent'] = margin_as_percent unless margin_as_percent.blank?
+      data['DepartmentHandle'] = department_handle unless department_handle.blank?
+      data['DistributionKeyHandle'] = distribution_key_handle unless distribution_key_handle.blank?
 
       return data
     end
