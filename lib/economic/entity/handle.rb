@@ -9,7 +9,7 @@ class Economic::Entity
       @id = hash[:id].to_i if hash[:id]
       @id1 = hash[:id1].to_i if hash[:id1]
       @id2 = hash[:id2].to_i if hash[:id2]
-      @number = hash[:number].to_i if hash[:number]
+      @number = hash[:number] if hash[:number]
     end
 
     def to_hash
