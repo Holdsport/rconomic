@@ -23,7 +23,7 @@ module Economic
           :order! => [:token, :appToken]
         }
       end
-      client.http.headers["Cookie"] = response.http.headers["Set-Cookie"]
+      @cookie = client.http.headers["Cookie"] = response.http.headers["Set-Cookie"].map { |c| c.split(';')[0] }.uniq.join(';')
     end
 
     # Provides access to the DebtorContacts
@@ -106,6 +106,7 @@ module Economic
     end
 
     def request(action, &block)
+      client.http.headers["Cookie"] = @cookie # Reset cookie
       response = client.request :economic, action, &block
       response_hash = response.to_hash
 
