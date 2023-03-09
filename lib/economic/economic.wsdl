@@ -62591,6 +62591,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CashBook_GetNextVoucherNumber">
+      <soap12:operation soapAction="http://e-conomic.com/CashBook_GetNextVoucherNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CashBook_GetDataArray">
       <soap12:operation soapAction="http://e-conomic.com/CashBook_GetDataArray" style="document" />
       <wsdl:input>
