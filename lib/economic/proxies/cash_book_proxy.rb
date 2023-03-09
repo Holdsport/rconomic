@@ -52,5 +52,15 @@ module Economic
       cash_book.name = response
       cash_book
     end
+
+    def next_available_number(id = 2)
+      session.request CashBook.soap_action(:get_next_voucher_number) do
+        soap.body = {
+          'cashBookHandle' => {
+            'Number' => id
+          }
+        }
+      end
+    end
   end
 end
